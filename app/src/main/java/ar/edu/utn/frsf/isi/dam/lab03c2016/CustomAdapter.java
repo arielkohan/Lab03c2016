@@ -41,7 +41,7 @@ public class CustomAdapter extends BaseAdapter {
 
     @Override
     public Object getItem(int position) {
-        return position;
+        return dataList.get(position);
     }
 
     @Override

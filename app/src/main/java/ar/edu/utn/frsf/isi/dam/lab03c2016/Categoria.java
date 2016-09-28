@@ -19,6 +19,11 @@ public class Categoria implements Serializable {
         this.descripcion = desc;
     }
 
+    @Override
+    public String toString() {
+        return id + ". " + descripcion;
+    }
+
     public Integer getId() {
         return id;
     }

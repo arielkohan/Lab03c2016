@@ -10,6 +10,8 @@
     <string name="en_ingles">En Ingles</string>
     <string name="fecha_fin">Fecha Fin: </string>
     <string name="ingrese_oferta">Ingrese oferta</string>
+    <string name="seleccione_moneda">Seleccione moneda de pago:</string>
+    <string name="seleccione_categoria">Seleccione una categoria:</string>
 
 
 </resources>

@@ -82,7 +82,16 @@ public class CustomAdapter extends BaseAdapter {
             holder.textViewOferta.setText(trabajo.getDescripcion());
             holder.textViewDescripcion.setText(trabajo.getHorasPresupuestadas().toString()); //TODO: CAMBIAR
             holder.textViewFechaFin.setText(trabajo.getFechaEntrega().toString());
-            holder.imgFlag.setImageResource(res.getIdentifier("ar.edu.utn.frsf.isi.dam.lab03c2016:drawable/" + "ar" , null, null));
+            String flagIdentifier = "ar.edu.utn.frsf.isi.dam.lab03c2016:drawable/";
+            switch (trabajo.getMonedaPago()){
+                case Trabajo.MONEDA_US: flagIdentifier += "us";break;
+                case Trabajo.MONEDA_EU: flagIdentifier += "eu";break;
+                case Trabajo.MONEDA_AR: flagIdentifier += "ar";break;
+                case Trabajo.MONEDA_UK: flagIdentifier += "uk";break;
+                case Trabajo.MONEDA_BR: flagIdentifier += "br";break;
+                default: flagIdentifier += "us";break;
+            }
+            holder.imgFlag.setImageResource(res.getIdentifier(flagIdentifier , null, null));
             holder.checkboxIngles.setChecked(trabajo.getRequiereIngles());
 
             //Listener

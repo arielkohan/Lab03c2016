@@ -1,5 +1,6 @@
 package ar.edu.utn.frsf.isi.dam.lab03c2016;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
@@ -48,7 +49,10 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()){
             case R.id.menuCrearOferta: {
-                Toast.makeText(MainActivity.this, "Crear oferta clickeado", Toast.LENGTH_SHORT).show();
+
+                Intent i = new Intent(MainActivity.this, CrearOfertaActivity.class);
+
+                startActivityForResult(i, 0);
                 return true;
             }
             default:{
@@ -66,7 +70,11 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         return false;
     }
 
-    /*public boolean onCreateOptionsMenu(Menu menu){
-
-    }*/
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        Trabajo resultado = (Trabajo) data.getSerializableExtra("resultado");
+        listTrabajos.add(resultado);
+        adapter.notifyDataSetChanged();
+        Toast.makeText(MainActivity.this, "Trabajo agregado.", Toast.LENGTH_SHORT).show();
+    }
 }

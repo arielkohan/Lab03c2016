@@ -20,13 +20,78 @@
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/editText"
+        android:id="@+id/editText_oferta"
         />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/seleccione_categoria"
+        android:id="@+id/textView3"/>
+
+    <Spinner
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/spinner_categoria"
+        android:layout_gravity="center_horizontal"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/seleccione_moneda"
+        android:id="@+id/textView2"/>
+
+    <RadioGroup
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:id="@+id/radioGroupFlag">
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableRight="@drawable/us"
+            android:id="@+id/radiomoneda_us"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginRight="4dp"
+            android:checked="true"/>
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableRight="@drawable/eu"
+            android:id="@+id/radiomoneda_eu"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginRight="4dp"/>
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableRight="@drawable/ar"
+            android:id="@+id/radiomoneda_ar"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginRight="4dp"/>
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableRight="@drawable/uk"
+            android:id="@+id/radiomoneda_uk"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginRight="4dp"/>
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableRight="@drawable/br"
+            android:id="@+id/radiomoneda_br"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginRight="4dp"/>
+
+
+    </RadioGroup>
 
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/guardar"
-        android:id="@+id/button"
+        android:id="@+id/buttonGuardar"
         android:layout_gravity="center_horizontal"/>
 </LinearLayout>

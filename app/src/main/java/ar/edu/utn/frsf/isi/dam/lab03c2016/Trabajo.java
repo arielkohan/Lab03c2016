@@ -8,6 +8,14 @@ import java.util.Random;
  */
 public class Trabajo implements Serializable{
 
+    public static final int MONEDA_US = 1;
+    public static final int MONEDA_EU = 2;
+    public static final int MONEDA_AR = 3;
+    public static final int MONEDA_UK = 4;
+    public static final int MONEDA_BR = 5;
+
+    public static int cuentaId = 1;
+
     private Integer id;
     private String descripcion;
     private Integer horasPresupuestadas;
@@ -18,6 +26,7 @@ public class Trabajo implements Serializable{
     private Boolean requiereIngles;
 
     public Trabajo(){
+        cuentaId ++;
         Random r =new Random();
         this.monedaPago=1+r.nextInt(4);
         this.requiereIngles=r.nextInt()%2==0;
@@ -40,6 +49,11 @@ public class Trabajo implements Serializable{
         this.id = id;
         this.descripcion = desc;
         this.categoria = cat;
+    }
+
+    public Trabajo(Integer id,String desc,Categoria cat, int monedaPago){
+        this(id, desc, cat);
+        this.monedaPago = monedaPago;
     }
 
     public Integer getId() {

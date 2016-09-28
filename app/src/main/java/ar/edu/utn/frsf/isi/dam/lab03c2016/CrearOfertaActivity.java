@@ -72,5 +72,24 @@ public class CrearOfertaActivity extends AppCompatActivity  {
 
     }
 
+    @Override
+    public void onSaveInstanceState(Bundle outState){
+        super.onSaveInstanceState(outState);
+        outState.putString("oferta", editTextOferta.getText().toString());
+        outState.putInt("categoria", spinnerCategoria.getSelectedItemPosition());
+        outState.putInt("moneda", radioGroupMoneda.getCheckedRadioButtonId());
+    }
 
+    @Override
+    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+//        contador = savedInstanceState.getInt("contador");
+//        tv.setText("Contador : "+contador);
+//        btnSumar.setEnabled(savedInstanceState.getBoolean("btnSumar"));
+//        btnRestar.setEnabled(savedInstanceState.getBoolean("btnRestar"));
+        editTextOferta.setText(savedInstanceState.getString("oferta"));
+        spinnerCategoria.setSelection(savedInstanceState.getInt("categoria"));
+        radioGroupMoneda.check(savedInstanceState.getInt("moneda"));
+
+    }
 }

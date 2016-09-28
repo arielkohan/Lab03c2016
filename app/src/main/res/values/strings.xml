@@ -1,7 +1,10 @@
 <resources>
     <string name="app_name">Lab03c2016</string>
     <string name="title">WorkFromHome</string>
-    <string name="toolbar_button">CREAR UNA OFERTA</string>
+    <string name="toolbar_crear_oferta">CREAR UNA OFERTA</string>
+    <string name="toolbar_ver_ofertas">VER MIS OFERTAS</string>
+    <string name="toolbar_config">CONFIGURACION</string>
+    <string name="toolbar_salir">SALIR</string>
     <string name="dialog_title">Acciones</string>
     <string name="dialog_postularse">Postularese a esta oferta</string>
     <string name="dialog_compartir">Compartir esta oferta</string>

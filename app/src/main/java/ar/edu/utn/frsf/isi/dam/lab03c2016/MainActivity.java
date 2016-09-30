@@ -1,10 +1,12 @@
 package ar.edu.utn.frsf.isi.dam.lab03c2016;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.ContextMenu;
 import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
@@ -14,7 +16,7 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-public class MainActivity extends AppCompatActivity implements AdapterView.OnItemLongClickListener{
+public class MainActivity extends AppCompatActivity{
 
     private Toolbar toolbar;
 
@@ -33,10 +35,20 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         listView = (ListView) findViewById(R.id.listView);
         adapter = new CustomAdapter(this, listTrabajos, getResources());
         listView.setAdapter(adapter);
-        listView.setOnItemLongClickListener(this);
+        //listView.setOnItemLongClickListener(this);
 
+        registerForContextMenu(listView);
 
+    }
 
+    @Override
+    public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
+        super.onCreateContextMenu(menu, v, menuInfo);
+
+        super.onCreateContextMenu(menu,v,menuInfo);
+
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu_contextual,menu);
     }
 
     @Override
@@ -61,13 +73,34 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         }
     }
 
-
-
     @Override
-    public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
-        Trabajo trabajo = (Trabajo) parent.getItemAtPosition(position);
-        Toast.makeText(this, trabajo.getDescripcion(), Toast.LENGTH_LONG).show();
-        return false;
+    public boolean onContextItemSelected(MenuItem item) {
+        switch (item.getItemId()){
+            case R.id.postularse: {
+                Toast.makeText(MainActivity.this, getString(R.string.label_postularse), Toast.LENGTH_SHORT).show();
+                return true;
+            }
+            case R.id.compartir: {
+
+                AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
+
+                Trabajo trabajo = (Trabajo) listView.getItemAtPosition(info.position);
+
+                Intent whatsappIntent = new Intent(Intent.ACTION_SEND);
+                whatsappIntent.setType("text/plain");
+                whatsappIntent.setPackage("com.whatsapp");
+                whatsappIntent.putExtra(Intent.EXTRA_TEXT, trabajo.getDescripcionTrabajo(this));
+                try {
+                    startActivity(whatsappIntent);
+                } catch (android.content.ActivityNotFoundException ex) {
+                    Toast.makeText(MainActivity.this, getString(R.string.label_whatsupp_no_instalado), Toast.LENGTH_SHORT).show();
+                }
+                return true;
+            }
+            default:{
+                return super.onContextItemSelected(item);
+            }
+        }
     }
 
     @Override
@@ -76,5 +109,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         listTrabajos.add(resultado);
         adapter.notifyDataSetChanged();
         Toast.makeText(MainActivity.this, "Trabajo agregado.", Toast.LENGTH_SHORT).show();
+
+
     }
 }

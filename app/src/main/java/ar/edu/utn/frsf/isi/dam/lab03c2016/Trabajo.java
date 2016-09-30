@@ -1,5 +1,10 @@
 package ar.edu.utn.frsf.isi.dam.lab03c2016;
+import android.app.Activity;
+
 import java.io.Serializable;
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Random;
 
@@ -141,4 +146,31 @@ public class Trabajo implements Serializable{
             new Trabajo(18,"Sitio Coroporativo"),
             new Trabajo(19,"Aplicacion www1")
     };
+
+    public String getDescripcionTrabajo(Activity activity){
+
+        SimpleDateFormat dt = new SimpleDateFormat("dd/mm/yyyy");
+        NumberFormat formatter = new DecimalFormat("#0.00");
+
+        String descripcionTrabajo = "";
+        descripcionTrabajo+=this.getCategoria().getDescripcion() + "\n";
+        descripcionTrabajo+=this.getDescripcion() + "\n";
+        descripcionTrabajo+=activity.getString(R.string.label_paga, this.getHorasPresupuestadas().toString(),formatter.format(this.getPrecioMaximoHora()).toString()) + getFlagCode() +  "\n";
+        descripcionTrabajo+=activity.getString(R.string.fecha_fin) + dt.format(this.getFechaEntrega()) + "\n";
+        descripcionTrabajo+=activity.getString(R.string.en_ingles) + (this.getRequiereIngles() ? ": Si" : ": No")  + "\n";
+        return descripcionTrabajo;
+    }
+
+    private String getFlagCode(){
+        String flagCode = "";
+        switch (this.getMonedaPago()){
+            case Trabajo.MONEDA_US: flagCode += "\uD83C\uDDFA\uD83C\uDDF8";break;
+            case Trabajo.MONEDA_EU: flagCode += "\uD83C\uDDEA\uD83C\uDDFA";break;
+            case Trabajo.MONEDA_AR: flagCode += "\uD83C\uDDE6\uD83C\uDDF7";break;
+            case Trabajo.MONEDA_UK: flagCode += "\uD83C\uDDEC\uD83C\uDDE7";break;
+            case Trabajo.MONEDA_BR: flagCode += "\uD83C\uDDE7\uD83C\uDDF7";break;
+            default: break;
+        }
+        return flagCode;
+    }
 }

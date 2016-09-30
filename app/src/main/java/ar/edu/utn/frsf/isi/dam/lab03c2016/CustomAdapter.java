@@ -11,6 +11,9 @@ import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
 /**
@@ -75,13 +78,15 @@ public class CustomAdapter extends BaseAdapter {
             holder.textViewProfesion.setText("No Data");
         } else {
 
+            SimpleDateFormat dt = new SimpleDateFormat("dd/mm/yyyy");
+            NumberFormat formatter = new DecimalFormat("#0.00");
 
             trabajo = (Trabajo) dataList.get(position);
 
             holder.textViewProfesion.setText(trabajo.getCategoria().getDescripcion());
             holder.textViewOferta.setText(trabajo.getDescripcion());
-            holder.textViewDescripcion.setText(trabajo.getHorasPresupuestadas().toString()); //TODO: CAMBIAR
-            holder.textViewFechaFin.setText(trabajo.getFechaEntrega().toString());
+            holder.textViewDescripcion.setText(activity.getString(R.string.label_paga, trabajo.getHorasPresupuestadas().toString(),formatter.format(trabajo.getPrecioMaximoHora()).toString()));
+            holder.textViewFechaFin.setText(activity.getString(R.string.fecha_fin) + dt.format(trabajo.getFechaEntrega()));
             String flagIdentifier = "ar.edu.utn.frsf.isi.dam.lab03c2016:drawable/";
             switch (trabajo.getMonedaPago()){
                 case Trabajo.MONEDA_US: flagIdentifier += "us";break;

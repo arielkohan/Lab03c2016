@@ -35,7 +35,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/img_flag"
-            android:layout_gravity="center_horizontal"/>
+            android:layout_gravity="center_horizontal"
+            android:layout_marginLeft="10dp"/>
     </LinearLayout>
 
     <LinearLayout
@@ -54,7 +55,8 @@
             android:layout_height="wrap_content"
             android:text="@string/en_ingles"
             android:id="@+id/checkBox_ingles"
-            android:enabled="false"/>
+            android:enabled="false"
+            android:layout_marginLeft="10dp"/>
     </LinearLayout>
 
 

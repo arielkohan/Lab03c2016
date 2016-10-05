@@ -93,7 +93,7 @@ public class MainActivity extends AppCompatActivity{
                 try {
                     startActivity(intent);
                 } catch (android.content.ActivityNotFoundException ex) {
-                    Toast.makeText(MainActivity.this, getString(R.string.label_whatsupp_no_instalado), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(MainActivity.this, getString(R.string.label_mensaje_no_instalado), Toast.LENGTH_SHORT).show();
                 }
                 return true;
             }

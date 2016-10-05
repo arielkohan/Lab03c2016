@@ -17,6 +17,6 @@
     <string name="seleccione_categoria">Seleccione una categoria:</string>
     <string name="label_paga">Horas: %1$s Max $/Hora: %2$s</string>
     <string name="label_postularse">Se ha postulado a la oferta</string>
-    <string name="label_whatsupp_no_instalado">Whatsupp no esta instalado en el dispositivo.</string>
+    <string name="label_whatsupp_no_instalado">WhatsApp no esta instalado en el dispositivo.</string>
 
 </resources>

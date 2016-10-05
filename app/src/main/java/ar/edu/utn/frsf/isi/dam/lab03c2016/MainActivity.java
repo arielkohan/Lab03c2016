@@ -86,12 +86,12 @@ public class MainActivity extends AppCompatActivity{
 
                 Trabajo trabajo = (Trabajo) listView.getItemAtPosition(info.position);
 
-                Intent whatsappIntent = new Intent(Intent.ACTION_SEND);
-                whatsappIntent.setType("text/plain");
-                whatsappIntent.setPackage("com.whatsapp");
-                whatsappIntent.putExtra(Intent.EXTRA_TEXT, trabajo.getDescripcionTrabajo(this));
+                Intent intent = new Intent(Intent.ACTION_SEND);
+                intent.setType("text/plain");
+                //intent.setPackage("com.whatsapp");
+                intent.putExtra(Intent.EXTRA_TEXT, trabajo.getDescripcionTrabajo(this));
                 try {
-                    startActivity(whatsappIntent);
+                    startActivity(intent);
                 } catch (android.content.ActivityNotFoundException ex) {
                     Toast.makeText(MainActivity.this, getString(R.string.label_whatsupp_no_instalado), Toast.LENGTH_SHORT).show();
                 }
